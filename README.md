@@ -13,7 +13,7 @@ go run hello.go
 go mod xxx   # eg: go mod tidy
 
 # compile a Go file to binary
-go build hello.go
+go build hello.go   # without output directory: go build -o bin/mybinary
 
 # execute the binary
 ./hello
@@ -35,6 +35,12 @@ go tool xxx
 
 # report likely mistakes in packages
 go vet hello.go
+
+# misc - environment variables
+GOOS=linux GOARCH=amd64 go build
+
+# misc - full list
+$GOROOT/src/go/build/syslist.go
 ```
 
 ## License
