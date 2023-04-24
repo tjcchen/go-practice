@@ -33,7 +33,7 @@ go test xxx
 # run specific go tool
 go tool xxx
 
-# report likely mistakes in packages
+# report likely mistakes in packages, static code checking
 go vet hello.go
 
 # misc - environment variables
