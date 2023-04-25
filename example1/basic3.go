@@ -15,7 +15,12 @@ func main() {
 	// array and slice
 	myArray := [5]int{1, 2, 3, 4, 5}
 	mySlice := myArray[1:4]                // namely 2, 3, 4 from myArray
-	mySlice1 := []int{6, 5, 7}
+
+	mySlice1 := []int{}
+	mySlice1 = append(mySlice1, 6)
+	mySlice1 = append(mySlice1, 5)
+	mySlice1 = append(mySlice1, 7)
+
 	fmt.Printf("mySlice %+v\n", mySlice)   // mySlice [2 3 4]
 	fmt.Printf("mySlice1 %+v\n", mySlice1) // mySlice1 [6 5 7]
 	fullSlice := myArray[:]
