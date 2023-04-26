@@ -60,9 +60,21 @@ func main() {
 	p.model = "testModel"
 	fmt.Println(p.getName()) // vendor: testVendor, model: testModel
 
-	// pointer address & value
+	// struct pointer address & value
 	h1 := Human{} // h1 is a struct
 	p1 := &h1     // & means the pointer address, p1 is a pointer variable of h1
 	v1 := *p1     // * means the pointer value
 	fmt.Printf("struct: %s, pointer address: %s, pointer value: %s\n", h1, p1, v1) // { } &{ } { }
+
+	// instantiate struct & print value
+	t := MyType{Name: "test"}
+	printMyType(&t)  // test
+}
+
+type MyType struct {
+	Name string
+}
+
+func printMyType(t *MyType) {
+	println(t.Name)
 }
