@@ -13,7 +13,7 @@ go run hello.go
 go mod xxx   # eg: go mod tidy
 
 # compile a Go file to binary
-go build hello.go   # without output directory: go build -o bin/mybinary
+go build hello.go   # with output directory: go build -o bin/mybinary
 
 # execute the binary
 ./hello
