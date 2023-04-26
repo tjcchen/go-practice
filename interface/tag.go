@@ -9,7 +9,7 @@ import (
  * Eg: NodeName string `json:"nodeName,omitempty" protobuf:"bytes,10,opt,name=nodeName"`
  */
 type MyType1 struct {
-	Name string `json:"name"`
+	Name string `json:"name" protobuf:"bytes,10,opt,name=nodeName"`
 }
 
 func main() {
@@ -19,5 +19,9 @@ func main() {
 	name := myType.Field(0)
 	tag := name.Tag.Get("json")
 
-	println(tag) // name
+	protobuf := myType.Field(0)
+	pTag := protobuf.Tag.Get("protobuf")
+
+	println(tag)  // name
+	println(pTag) // bytes,10,opt,name=nodeName
 }
