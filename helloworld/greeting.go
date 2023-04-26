@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	args := os.Args
+	args := os.Args   // Passing multiple parameters. Eg: ./greeting param1 param2
 	fmt.Println(args)
 	if len(args) != 0 {
 		fmt.Println("Does not accept any argument")
