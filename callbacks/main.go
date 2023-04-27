@@ -1,21 +1,29 @@
 package main
 
-func main() {
-	var a *int
-	*a += 1
+import (
+	"fmt"
+)
 
-	// doOperation(1, increase)
-	doOperation(1, decrease)
+func main() {
+	// var a *int
+	// *a += 1
+
+	DoOperation(1, increase) // increase result is:  2
+	// DoOperation(1, decrease) // decrease result is: 0
 }
 
-func doOperation(y int, fn func(int, int)) {
+func DoOperation(y int, fn func(int, int)) {
 	fn(y, 1)
 }
 
-func increase(a, b int) int {
+func increase1(a, b int) int {
 	return a + b
 }
 
+func increase(a, b int) {
+	fmt.Println("increase result is: ", a+b)
+}
+
 func decrease(a, b int) {
-	println("decrease result is: ", a-b)
+	fmt.Println("decrease result is: ", a-b)
 }
