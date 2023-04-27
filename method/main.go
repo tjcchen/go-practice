@@ -11,6 +11,8 @@ type Server struct {
 }
 
 // For reference purpose - receiver usages
+// 1. use receiver to store context information
+// 2. use receiver to reduce parameters passing
 // func (s *Server) StartTLS() {
 // 	if s.URL != "" {
 // 		panic("Server already started")
