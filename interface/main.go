@@ -21,6 +21,10 @@ type Plane struct {
 	model  string
 }
 
+type Car struct {
+	factory, model string
+}
+
 func (h *Human) getName() string {
 	return h.firstName + ", " + h.lastName
 }
@@ -28,10 +32,6 @@ func (h *Human) getName() string {
 func (p Plane) getName() string {
 	// The fmt.Sprintf function in the GO programming language is a function used to return a formatted string
 	return fmt.Sprintf("vendor: %s, model: %s", p.vendor, p.model)
-}
-
-type Car struct {
-	factory, model string
 }
 
 func (c *Car) getName() string {
@@ -69,6 +69,11 @@ func main() {
 	// instantiate struct & print value
 	t := MyType{Name: "test"}
 	printMyType(&t)  // test
+
+	// polymorphism
+	var human IF
+	human = new(Human)
+	fmt.Println(human.getName()) //  , 
 }
 
 type MyType struct {
