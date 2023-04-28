@@ -33,4 +33,13 @@ func main() {
 	fmt.Println(pointer)        // 0xc000096230 - pointer do not change
 	fmt.Println(anotherString)  // a string value - pointer value does no change too
 
+	// 2. pointer and value with struct
+	param := ParameterStruct{Name: "aaa"}
+	fmt.Println(param)          // {aaa}
+
+	changeParameter(&param, "bbb")
+	fmt.Println(param)          // {bbb} - with a pointer parameter, we can change it
+
+	cannotChangeParameter(param, "ccc")
+	fmt.Println(param)          // {bbb}
 }
