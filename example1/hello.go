@@ -22,7 +22,7 @@ func main() {
 	// 3. go routine cannot be executed
 	// words := []string{"foo", "bar", "baz"}
 	// for _, word := range words {
-	//  // go routine
+	//  // go routine - a goroutine is a lightweight thread of execution.
 	// 	go func() {
 	// 		fmt.Println(word)
 	// 	}()

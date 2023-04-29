@@ -21,9 +21,12 @@ func loopFunc() {
 	lock := sync.Mutex{}
 	for i := 0; i < 3; i++ {
 		// use a closure to resolve the dead lock issue
+		// a goroutine is a lightweight thread of execution
 		go func(i int) {
 			lock.Lock()
+			// this defer guarantees whatever happens the code will be unlocked
 			defer lock.Unlock()
+			// some code logic
 			fmt.Println("loopFunc", i)
 		}(i)
 	}
