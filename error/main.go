@@ -19,8 +19,8 @@ func (e *StatusError) Error() string {
 }
 
 func main() {
-	// We not have exception or try-catch grammar support,
-	// we deal with error with error message. To create an error, we use:
+	// We not have exception or try-catch grammar support in Go,
+	// we deal with error with error messages. To create an error, we use:
 	// 1. errors.New()
 	// 2. fmt.errorF()
 	var errNotFound error = errors.New("NotFound")
