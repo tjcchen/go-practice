@@ -6,6 +6,12 @@ import (
 	"fmt"
 )
 
+/**
+ * use cases of defer - close your opened resources
+ * 1. defer file.close()
+ * 2. defer mu.Unlock()
+ * 3. defer println("")
+ */
 func main() {
 	// defer - FILO
 	// defer equals to finally in Java, C#, the relevant logic will be executed finally
