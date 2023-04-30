@@ -8,6 +8,7 @@ func main() {
 	// panic: occurs when there is a system error, panic will make current thread crash
 	// defer: transfer the control to the panic caller
 	// recover: function recover from the panic or system errors
+	// use `defer + recover` logic to fix panic
 
 	// execution order:
 	// 1. defer func is called
