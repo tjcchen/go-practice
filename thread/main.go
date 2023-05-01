@@ -74,6 +74,30 @@ func main() {
 	for v := range ch3 {
 		fmt.Println("receiving: ", v)
 	}
+
+	// one-way direction
+	// 1. send only
+	// eg: var sendOnly chan<- int ( putting )
+	// 2. receive only
+	// eg: var readOnly <-chan int ( receiving )
+	// 3. example of Istio webhook controller
+	// func (w *WebhookCertPatcher) runWebhookController(stopChan <-chan struct{}){}
+
+	// var sendOnly chan<- int
+	// var readOnly <-chan int
+
+	// 4. two-way channel exchaning
+	var c = make(chan int)
+	go prod(c)
+	go consume(c)
+}
+
+func prod(ch chan<- int) {
+	for { ch <- 1 }
+}
+
+func consume(ch <-chan int) {
+	for { <-ch }
 }
 
 func loopFunc() {
