@@ -10,6 +10,10 @@ func main() {
 	// recover: function recover from the panic or system errors
 	// use `defer + recover` logic to fix panic
 
+	// How to handle NPE in Go:
+	// 1. adding nil check
+	// 2. use defer & recover conbinations to catch errors
+
 	// execution order:
 	// 1. defer func is called
 	// 2. a panic is triggered
