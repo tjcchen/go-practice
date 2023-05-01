@@ -1,6 +1,7 @@
 package main
 
 import (
+	"time"
 	"fmt"
 )
 
@@ -16,4 +17,32 @@ func main() {
 	// 2.1 multiple threads shared the same process memory
 	// 3. coroutine: coroutine is a lightweight thread implementation in Go - goroutine
 
+	// CSP( Communicating Sequential Process ) - multi-threads model in Go
+	// 1. CSP - communicating model between entities
+	// 2. channel - communicating between different threads
+
+	// thread & goroutine
+	// 1. goroutine is more lightweight than threads
+	// 2. the switching process between different threads is expensive, while goroutine cost less
+	// 3. GOMAXPROCS - control the max serial thread number( concurrency )
+
+	// Examples
+	loopFunc()
+	time.Sleep(time.Second) // loopFunc:  0, 1, 2
+
+	loopFuncWithGoroutine()
+	time.Sleep(time.Second) // loopFunc:  0, 2, 1 - order does not fixed
+}
+
+func loopFunc() {
+	for i := 0; i < 3; i++ {
+		fmt.Println("loopFunc: ", i)
+	}
+}
+
+// with goroutine - multiple CPUs
+func loopFuncWithGoroutine() {
+	for i := 0; i < 3; i++ {
+		go fmt.Println("loopFunc: ", i)
+	}
 }
