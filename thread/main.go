@@ -32,6 +32,21 @@ func main() {
 
 	loopFuncWithGoroutine()
 	time.Sleep(time.Second) // loopFunc:  0, 2, 1 - order does not fixed
+
+	// channel - communication between different threads
+	// 1. one side sends data, the other side receives data
+	// 2. there is only one goroutine(thread) can access data at a time, there is no resources competition in GO
+	// 3. goroutine execute in code order
+	// execution sequence:
+	// 1. hello from goroutine
+	// 2. 0
+	ch := make(chan int)
+	go func() {
+		fmt.Println("hello from goroutine")
+		ch <- 0      // write data to channel
+	}()
+	i := <-ch      // retrieve data from channel and assign to another variable
+	fmt.Println(i) // 0
 }
 
 func loopFunc() {
