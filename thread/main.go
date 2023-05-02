@@ -90,6 +90,18 @@ func main() {
 	var c = make(chan int)
 	go prodcude(c) // produce - produce & consume model
 	go consume(c)  // consume - produce & consume model
+
+	// close channel
+	// 1. we don't need to close channel every time
+	// 2. the meaning of closing channel is to tell receiver that we do not send new data any longer
+	// 3. only sender needs to close channel
+	var ch4 = make(chan int)
+	// ch4 <- 5 // put value to channel
+	defer close(ch4) // channel will be closed eventually
+	// retrieve channel value and check whether the channel is closed
+	if v, notClosed := <-ch4; notClosed {
+		fmt.Println(v)
+	}
 }
 
 // write only
