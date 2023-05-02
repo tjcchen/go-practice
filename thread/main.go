@@ -88,14 +88,16 @@ func main() {
 
 	// 4. two-way channel exchaning
 	var c = make(chan int)
-	go prod(c)
-	go consume(c)
+	go prodcude(c) // produce - produce & consume model
+	go consume(c)  // consume - produce & consume model
 }
 
-func prod(ch chan<- int) {
+// write only
+func prodcude(ch chan<- int) {
 	for { ch <- 1 }
 }
 
+// read only
 func consume(ch <-chan int) {
 	for { <-ch }
 }
