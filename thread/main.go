@@ -55,8 +55,8 @@ func main() {
 	// 1. the communication of channel is in a sync way
 	// 2. when the buffer is full, the sending of the data is blocked
 	// 3. we can use `make` to define a channel buffer, the default buffer is 0
-	// ch1 := make(chan int)        // channel buffer is 0
-	// ch2 := make(chan int, 1)     // channel buffer is 1
+	ch1 := make(chan int)        // channel buffer is 0
+	ch2 := make(chan int, 1)     // channel buffer is 1
 
 	// iterate over channel buffer zone
 	ch3 := make(chan int, 10)
@@ -101,6 +101,22 @@ func main() {
 	// retrieve channel value and check whether the channel is closed
 	if v, notClosed := <-ch4; notClosed {
 		fmt.Println(v)
+	}
+
+	// select channel
+	// when we have multiple channels, we can use `select` to choose from multiple channels
+	// 1. when all channels is blocked or waited, the code will execute the default branch
+	// 2. if we multiple channels is ready, we choose one channel randomly
+	select {
+	case v := <- ch1:
+		// ...
+		fmt.Println(v)
+	case v := <- ch2:
+		// ...
+		fmt.Println(v)
+	default:
+		// ...
+		fmt.Println("default behavior")
 	}
 }
 
