@@ -7,6 +7,10 @@ import (
 func main() {
 	// we have to use a channel to guarantee execution order, otherwise
 	// the "second line of code" won't be executed
+	// execution order:
+	// 1. first line of code
+	// 2. second line of code
+	// 3. third line of code 1
 	fmt.Println("first line of code")
 	ch := make(chan int)
 	go func() {
