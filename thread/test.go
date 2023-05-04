@@ -17,6 +17,7 @@ func main() {
 		fmt.Println("second line of code")
 		ch <- 1 // data assignment - send data
 	}()
+	// [important] this line of code blocks the main thread exit, since channel does not have value
 	i := <-ch // retrieve data - receive data
 	fmt.Println("third line of code", i)
 }
