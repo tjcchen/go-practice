@@ -1,15 +1,15 @@
 package main
 
 import (
+	"time"
 	"fmt"
 )
 
 func main() {
 	// how to stop a child goroutine? with close(channel)
 	done := make(chan bool)
-	go func() {
+	go func() { // go routine listens to channel write
 		fmt.Println("go routine code")
-		done <- true
 		for {
 			fmt.Println("infinite loop")
 			select {
@@ -18,11 +18,16 @@ func main() {
 				return
 			default:
 				fmt.Println("select default branch")
-				return
 			}
 		}
 	}()
-	val := <-done
-	fmt.Println("main thread code", val)
-	close(done)
+
+	done <- true // trigger go routine
+	fmt.Println("main thread code")
+	time.Sleep(3 * time.Second)
+	close(done) // important
+
+	// close child goroutine with Context - please refer to donechannel.go
+	
+
 }
