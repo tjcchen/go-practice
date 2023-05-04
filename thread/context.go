@@ -1,12 +1,13 @@
 package main
 
 import (
-	"time"
+	"context"
 	"fmt"
+	"time"
 )
 
 // mock context
-type Context interface {
+type Context1 interface {
 	Deadline() (deadline time.Time, ok bool)
 	Done() <-chan struct{}
 	Err() error
@@ -23,4 +24,45 @@ func main() {
 	// - context.WithDeadline
 	// - context.WithValue
 	// - context.WithCancel
+
+	// 1. Context share values
+	baseCtx := context.Background()
+	ctx := context.WithValue(baseCtx, "a", "b")
+	go func(c context.Context) {
+		fmt.Println(c.Value("a")) // b
+	}(ctx)
+
+	time.Sleep(1 * time.Second) // we need to let main thread sleep to trigger child goroutine logic
+
+	// 2. When timeout time reaches, we need to do sth.
+	// execution order:
+	// enter default
+  // child process interrupt...
+  // main process exit!
+	timeoutCtx, cancel := context.WithTimeout(baseCtx, time.Second) // with 1 second timeout
+	defer cancel()
+
+	go func(ctx context.Context) {
+		ticker := time.NewTicker(1 * time.Second)
+		for _ = range ticker.C {
+			select {
+			case <-ctx.Done():
+				// ...
+				// when timeout time reaches, we need to do sth here.
+				// ....
+				fmt.Println("child process interrupt...")
+				return
+			default:
+				fmt.Println("enter default")
+			}
+		}
+	}(timeoutCtx)
+
+	select {
+	case <-timeoutCtx.Done():
+		time.Sleep(1 * time.Second)
+		fmt.Println("main process exit!")
+	}
+
+	// time.Sleep(5 * time.Second) // print "child process interrupt..." only
 }
