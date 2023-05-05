@@ -40,7 +40,7 @@ func main() {
 		messages <- i
 	}
 
-	time.Sleep(5 * time.Second)
+	time.Sleep(5 * time.Second) // main thread time.Sleep will trigger its goroutine
 	close(done)
 	time.Sleep(1 * time.Second)
 	fmt.Println("main process exit!")

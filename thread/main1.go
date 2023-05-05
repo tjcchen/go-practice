@@ -5,6 +5,13 @@ import (
 	"fmt"
 )
 
+/**
+ * Execution order:
+ * 1. go routine code
+ * 2. infinite loop
+ * 3. done channel is triggered, exit child go routine
+ * 4. main thread code
+ */
 func main() {
 	// how to stop a child goroutine? with close(channel)
 	done := make(chan bool)
@@ -28,6 +35,4 @@ func main() {
 	close(done) // important
 
 	// close child goroutine with Context - please refer to donechannel.go
-	
-
 }
