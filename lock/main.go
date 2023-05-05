@@ -17,7 +17,6 @@ func main() {
 	//   sync.WaitGroup - wait for a group of goroutine returns
 	//   sync.Once - code being executed once only
 	//   sync.Cond - make a group of goroutine being revoked under certain conditions
-	//   
 	fmt.Println("---thread lock---")
 
 
