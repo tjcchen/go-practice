@@ -12,7 +12,7 @@ func main() {
 	// - Go not only support CSP(Communicating Sequential Process) model, the communcation between different channels,
 	//   but also support multi-thread data sharing
 	// - Sync syntax:
-	//   sync.Mutex - mutual exclusion: Lock() add lock; UnLock() remove lock
+	//   sync.Mutex( mutual exclusion ) - mutual exclusion: Lock() add lock; UnLock() remove lock
 	//   sync.RWMutex - read and write seperately
 	//   sync.WaitGroup - wait for a group of goroutine returns
 	//   sync.Once - code being executed once only

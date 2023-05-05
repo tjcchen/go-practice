@@ -50,7 +50,7 @@ func safeWrite() {
 	}
 	for i := 0; i < 100; i++ {
 		go func() {
-			s.Write(1, 1)
+			s.Write(1, i)
 		}()
 	}
 }
