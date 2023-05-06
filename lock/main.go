@@ -26,6 +26,10 @@ func main() {
   // - No matter it is a process or a thread, the linux would use `task_struct` to describe it. From a linux kernel perspective,
 	//   Thread is no difference to process
 	// - Glibc's pthread library offers NPTL( Native POSIX Threading Library ) support
+	// - check binary size: size basic5
+	// - check text & bss: objdump -x basic5
+	// - linux page size: getconf PAGE_SIZE( 4096 )
+	// - GoLang implements user thread based on GMP( Goroutine, Machine, Process ) model
 
 	fmt.Println("---thread lock---")
 
