@@ -52,7 +52,7 @@ func (q *Queue) Dequeue() string {
 		fmt.Println("no data available, wait")
 		q.cond.Wait()
 	}
-	// when code executes to this part, we assume we have data in queue
+	// when code executes to this part, we assume that we have data in queue
 	result := q.queue[0]
 	q.queue = q.queue[1:]
 	return result

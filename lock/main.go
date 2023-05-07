@@ -23,7 +23,7 @@ func main() {
 	//            It is the smallest unit of resource allocation. A process has it's own memory, fs, files, signal etc
 	// - thread: Thread is the set of instructions executed within a process that can range from a single thread to multiple.
 	//           It is the smalllest unit for scheduling
-  // - No matter it is a process or a thread, the linux would use `task_struct` to describe it. From a linux kernel perspective,
+	// - No matter it is a process or a thread, the linux would use `task_struct` to describe it. From a linux kernel perspective,
 	//   Thread is no difference to process
 	// - Glibc's pthread library offers NPTL( Native POSIX Threading Library ) support
 	// - check binary size: size basic5
@@ -43,7 +43,7 @@ func main() {
 	// - CentralCache
 	// - PageHeap
 	// - Virtual Memory
-  // Golang memory allocation( two span class matches to one size class, one for pointer, the other for reference ):
+	// Golang memory allocation( two span class matches to one size class, one for pointer, the other for reference ):
 	// - mcache
 	// - mcentral
 	// - mheap
@@ -51,7 +51,7 @@ func main() {
 	// Memory collection:
 	// - reference counter( Python, PHP, Swift ): each memory block maintains a counter, the an object is released, the counter--
 	// - mark & sweep( Golang ): scan code from root, mark reference object, and collect unmarked object
-	// - generation collector( Java ): Eden, Survivor, Tenured
+	// - generations collector( Java ): Eden, Survivor, Tenured
 
 	fmt.Println("---Go Routine---")
 
