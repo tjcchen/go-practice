@@ -9,7 +9,7 @@ type T struct {
 	A string
 }
 
-// please note receiver is struct
+// please note receiver is a struct
 func (t T) String() string {
 	return t.A + "1"
 }
