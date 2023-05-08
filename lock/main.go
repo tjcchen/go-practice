@@ -52,6 +52,17 @@ func main() {
 	// - reference counter( Python, PHP, Swift ): each memory block maintains a counter, when an object is released, the counter--
 	// - mark & sweep( Golang ): scan code from root, mark reference object, and collect unmarked object
 	// - generations collector( Java ): Eden, Survivor, Tenured
+	// - mspan: allocBits( record memory allocation state ), gcmarkBits( record each memory block's reference state, on the marking stage, mark 1 to referenced memory block, 0 to unrefered  )
+	// Golang GC Flow:
+	// - Mark: Mark Prepare( STW; mark the active object ), GC Drains( scan from root object - marked as black, grey, and white )
+	// - Mark Termination: re-scan( STW - stop the world )
+	// - Sweep
+	// - Sweep Termination
+	// How did Golang GC triggered?
+	// - memory allocation reaches its threshold
+	// - trigger GC periodically( 2 min by default )
+	// - manually by developer( runtime.GC() )
+	//
 
 	fmt.Println("---Go Routine---")
 
