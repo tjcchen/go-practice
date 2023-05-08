@@ -59,10 +59,15 @@ func main() {
 	// - Sweep
 	// - Sweep Termination
 	// How did Golang GC triggered?
-	// - memory allocation reaches its threshold
-	// - trigger GC periodically( 2 min by default )
-	// - manually by developer( runtime.GC() )
+	// - when memory allocation reaches its threshold
+	// - trigger GC periodically by the Golang( 2 min by default )
+	// - manually triggered by developer( runtime.GC() )
 	//
+	// 4. package references & dependencies management
+	// - go mod init, go mod tidy, go mod vendor, require - replace
+	// - GOPROXY: export GOPROXY=https://goproxy.cn
+	// - GO111MODULE: switch between vendor and local dependencies, eg: export GO111MODULE=off
+	// - GOPRIVATE: to load resources from intranet, eg: GOPRIVATE=*.corp.example.com
 
 	fmt.Println("---Go Routine---")
 
