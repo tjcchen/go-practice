@@ -16,7 +16,7 @@ func main() {
 	//   sync.RWMutex - read and write seperately: read does not block thread, but write blocks.
 	//   sync.WaitGroup - wait for a group of goroutine returns
 	//   sync.Once - code being executed once only
-	//   sync.Cond - make a group of goroutine being revoked under certain conditions
+	//   sync.Cond - make a group of goroutine being revoked under certain conditions( broadcast, signal, wait )
 
 	// 2. Thread scheduling - threads are scheduled for execution based on their priority.
 	// - process: A process in Linux is nothing but a program in execution. It's a running instance of a program.
@@ -26,7 +26,7 @@ func main() {
 	// - No matter it is a process or a thread, the linux would use `task_struct` to describe it. From a linux kernel perspective,
 	//   Thread is no difference to process
 	// - Glibc's pthread library offers NPTL( Native POSIX Threading Library ) support
-	// - check binary size: size basic5
+	// - check binary size: size basic5( text, bss )
 	// - check text & bss: objdump -x basic5
 	// - linux page size: getconf PAGE_SIZE( 4096 )
 	// - GoLang implements user thread based on GMP( Goroutine, Machine, Process ) model
@@ -49,7 +49,7 @@ func main() {
 	// - mheap
 	// - virtual memory
 	// Memory collection:
-	// - reference counter( Python, PHP, Swift ): each memory block maintains a counter, the an object is released, the counter--
+	// - reference counter( Python, PHP, Swift ): each memory block maintains a counter, when an object is released, the counter--
 	// - mark & sweep( Golang ): scan code from root, mark reference object, and collect unmarked object
 	// - generations collector( Java ): Eden, Survivor, Tenured
 
