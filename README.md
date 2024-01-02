@@ -44,4 +44,4 @@ $GOROOT/src/go/build/syslist.go
 ```
 
 ## License
-MIT
+This project is licensed under the terms of the MIT license.
